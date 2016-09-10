@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>nay nays lecture</title>
+  </head>
+  <body ng-app="userpost">
+
+
+
+    <h1>test form</h1>
+    <div ng-controller="UsersController">
+      <h1>User Blogs</h1>
+        <ul ng-repeat="user in users">
+          <li ng-click="getUserBlogs(user)">{{user.username}}</li>
+        </ul>
+
+      <input type="text" name="name" ng-model="user.username">
+      <input type="text" name="email" ng-model="user.email">
+      <input type="button" value="submit" name ="name" ng-click="SubmitUser(user)">
+      <input type="button" value="get users" name="get" ng-click="getUsers()">
+
+      <br>
+      <h4>Blog</h4>
+      <input type="text" ng-model="blog.title">
+      <br>
+      <input type="textarea" name="name" rows="8" cols="40" ng-model="blog.body"></textarea>
+
+
+      <select ng-model="blog.user_id">
+        <option ng-repeat="user in users" value="{{user.id}}">
+          {{user.username}}
+        </option>
+      </select>
+      <input type="button" name="" value="create blog" ng-click="submitBlog(blog)">
+
+      <h4>latest blogs</h4>
+      <ul ng-repeat="blog in blogs">
+        <li>
+          <h3 data-user-id="{{blog.user_id}}">{{blog.title}}</h3>
+          <h4>{{blog.body}}</h4>
+        </li>
+      </ul>
+
+    </div>
+
+
+
+
+
+    <script src="bower_components/angular/angular.js" charset="utf-8"></script>
+    <script src="bower_components/angular-route/angular-route.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+  </body>
+</html>
